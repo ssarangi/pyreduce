@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package protos;
+
+import "google/protobuf/timestamp.proto";
+
+message PipelineRequest {
+    int64 id = 1;
+    google.protobuf.Timestamp creation_time = 2;
+}
+
+message PipelineResponse {
+
+}
+
+service Master {
+    rpc ExecutePipeline(PipelineRequest) returns (PipelineResponse) {}
+}

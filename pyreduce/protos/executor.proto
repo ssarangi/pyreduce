@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package protos;
+
+message JobRequest {
+    string func_name = 1;
+    bytes code = 2;
+}
+
+message JobResponse {
+    string ack = 1;
+}
+
+service Executor {
+    rpc Execute(JobRequest) returns (JobResponse) {}
+}
