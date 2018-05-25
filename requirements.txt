@@ -2,3 +2,5 @@ coloredlogs
 flask
 grpcio
 grpcio-tools
+pyaes
+pendulum

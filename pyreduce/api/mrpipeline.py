@@ -3,6 +3,7 @@ from typing import Union
 from .pcollection import PCollection
 from .ptable import PTable
 from .pindexedtable import PIndexedTable
+from .master import Master
 from ..utils.logutils import get_logger
 
 logger = get_logger(__name__)
@@ -18,10 +19,10 @@ class Pipeline:
         """
         self._materialized_entities.append(parallel_entity)
 
-    def execute(self, master):
+    def execute(self, master : Master):
         """
         Executes the current pipeline, passing the MR graph to the server.
-        :param server: If None, a new master can be created.
+        :param master: If None, a new master can be created.
         """
         if master is None:
             raise NotImplemented("A new server creation is not yet implement")
