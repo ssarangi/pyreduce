@@ -3,6 +3,7 @@ import pendulum
 import socket
 
 from config import DiscoveryConfig
+from constants import KEYS
 from .exceptions import TimeOutException
 from .exceptions import TimeStampException
 from .exceptions import PasswordMagicException
@@ -70,5 +71,9 @@ def discover(magic=DiscoveryConfig.MAGIC,
 
             # Decode the json
             ok_details = json.loads(undecoded_msg)
+            print(ok_details)
 
-            return ok_details, "%s:%s" % addr
+            return (ok_details,
+                    "%s:%s" % addr,
+                    ok_details[KEYS.GRPC_SERVER_IP],
+                    ok_details[KEYS.GRPC_SERVER_PORT])

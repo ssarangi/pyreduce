@@ -19,6 +19,11 @@ class MasterStub(object):
         request_serializer=master__pb2.PipelineRequest.SerializeToString,
         response_deserializer=master__pb2.PipelineResponse.FromString,
         )
+    self.RegisterAgent = channel.unary_unary(
+        '/protos.Master/RegisterAgent',
+        request_serializer=master__pb2.RegisterAgentRequest.SerializeToString,
+        response_deserializer=master__pb2.RegisterAgentResponse.FromString,
+        )
 
 
 class MasterServicer(object):
@@ -32,6 +37,13 @@ class MasterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def RegisterAgent(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MasterServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +51,11 @@ def add_MasterServicer_to_server(servicer, server):
           servicer.ExecutePipeline,
           request_deserializer=master__pb2.PipelineRequest.FromString,
           response_serializer=master__pb2.PipelineResponse.SerializeToString,
+      ),
+      'RegisterAgent': grpc.unary_unary_rpc_method_handler(
+          servicer.RegisterAgent,
+          request_deserializer=master__pb2.RegisterAgentRequest.FromString,
+          response_serializer=master__pb2.RegisterAgentResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -1,8 +1,6 @@
-from .discover import discover
-from config.discovery_cfg import DiscoveryConfig
+class Agent:
+    def __init__(self):
+        self.grpc_port = None
 
-def execute_agent():
-    discover(magic=DiscoveryConfig.MAGIC,
-             port=DiscoveryConfig.PORT,
-             password=DiscoveryConfig.PASSWORD,
-             timeout=5)
+
+agent = Agent()

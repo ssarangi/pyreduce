@@ -1,2 +1,2 @@
 class GRPCConfig:
-    pass
+    PORT = 50051

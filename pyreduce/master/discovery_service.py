@@ -5,10 +5,11 @@ import asyncio
 import json
 import pendulum
 
+from constants import KEYS
 from utils import auth_utils
 from utils import logutils
 from utils import network
-from config import DiscoveryConfig
+from config import DiscoveryConfig, GRPCConfig
 logger = logutils.get_logger(__name__)
 
 
@@ -73,7 +74,8 @@ def server_discover(loop,
         password = auth_utils.prepare_text(password)
 
     config = dict()
-    config['send_heartbeat'] = 'yes'
+    config[KEYS.GRPC_SERVER_PORT] = GRPCConfig.PORT
+    config[KEYS.GRPC_SERVER_IP] = network.get_ip_address()
     _answer = json.dumps(config)
 
     # Setup Protocol
