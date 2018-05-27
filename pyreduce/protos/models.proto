@@ -8,9 +8,8 @@ message CPUInfo {
     string brand = 3;
     int32 count = 4;
     string cpu_version = 5;
-    int32 extended_model = 6;
-    int32 family = 7;
-    int32 L2_cache_size = 8;
+    int32 family = 6;
+    int32 L2_cache_size = 7;
 }
 
 // Python Version

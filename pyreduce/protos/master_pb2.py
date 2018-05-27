@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='master.proto',
   package='protos',
   syntax='proto3',
-  serialized_pb=_b('\n\x0cmaster.proto\x12\x06protos\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x0cmodels.proto\"P\n\x0fPipelineRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x31\n\rcreation_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x12\n\x10PipelineResponse\"?\n\x14RegisterAgentRequest\x12\'\n\x0bsystem_info\x18\x01 \x01(\x0b\x32\x12.protos.SystemInfo\"*\n\x15RegisterAgentResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t2\xa0\x01\n\x06Master\x12\x46\n\x0f\x45xecutePipeline\x12\x17.protos.PipelineRequest\x1a\x18.protos.PipelineResponse\"\x00\x12N\n\rRegisterAgent\x12\x1c.protos.RegisterAgentRequest\x1a\x1d.protos.RegisterAgentResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0cmaster.proto\x12\x06protos\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x0cmodels.proto\"P\n\x0fPipelineRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x31\n\rcreation_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x12\n\x10PipelineResponse\"?\n\x14RegisterAgentRequest\x12\'\n\x0bsystem_info\x18\x01 \x01(\x0b\x32\x12.protos.SystemInfo\"*\n\x15RegisterAgentResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\"M\n\x15\x41gentHeartBeatRequest\x12\x11\n\tunique_id\x18\x01 \x01(\t\x12\x11\n\tpid_count\x18\x02 \x01(\x05\x12\x0e\n\x06memory\x18\x03 \x01(\x03\"\x18\n\x16\x41gentHeartBeatResponse2\xf4\x01\n\x06Master\x12\x46\n\x0f\x45xecutePipeline\x12\x17.protos.PipelineRequest\x1a\x18.protos.PipelineResponse\"\x00\x12N\n\rRegisterAgent\x12\x1c.protos.RegisterAgentRequest\x1a\x1d.protos.RegisterAgentResponse\"\x00\x12R\n\x0f\x43lientHeartBeat\x12\x1d.protos.AgentHeartBeatRequest\x1a\x1e.protos.AgentHeartBeatResponse\"\x00\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,models__pb2.DESCRIPTOR,])
 
@@ -151,12 +151,83 @@ _REGISTERAGENTRESPONSE = _descriptor.Descriptor(
   serialized_end=280,
 )
 
+
+_AGENTHEARTBEATREQUEST = _descriptor.Descriptor(
+  name='AgentHeartBeatRequest',
+  full_name='protos.AgentHeartBeatRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='unique_id', full_name='protos.AgentHeartBeatRequest.unique_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='pid_count', full_name='protos.AgentHeartBeatRequest.pid_count', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='memory', full_name='protos.AgentHeartBeatRequest.memory', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=282,
+  serialized_end=359,
+)
+
+
+_AGENTHEARTBEATRESPONSE = _descriptor.Descriptor(
+  name='AgentHeartBeatResponse',
+  full_name='protos.AgentHeartBeatResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=361,
+  serialized_end=385,
+)
+
 _PIPELINEREQUEST.fields_by_name['creation_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _REGISTERAGENTREQUEST.fields_by_name['system_info'].message_type = models__pb2._SYSTEMINFO
 DESCRIPTOR.message_types_by_name['PipelineRequest'] = _PIPELINEREQUEST
 DESCRIPTOR.message_types_by_name['PipelineResponse'] = _PIPELINERESPONSE
 DESCRIPTOR.message_types_by_name['RegisterAgentRequest'] = _REGISTERAGENTREQUEST
 DESCRIPTOR.message_types_by_name['RegisterAgentResponse'] = _REGISTERAGENTRESPONSE
+DESCRIPTOR.message_types_by_name['AgentHeartBeatRequest'] = _AGENTHEARTBEATREQUEST
+DESCRIPTOR.message_types_by_name['AgentHeartBeatResponse'] = _AGENTHEARTBEATRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PipelineRequest = _reflection.GeneratedProtocolMessageType('PipelineRequest', (_message.Message,), dict(
@@ -187,6 +258,20 @@ RegisterAgentResponse = _reflection.GeneratedProtocolMessageType('RegisterAgentR
   ))
 _sym_db.RegisterMessage(RegisterAgentResponse)
 
+AgentHeartBeatRequest = _reflection.GeneratedProtocolMessageType('AgentHeartBeatRequest', (_message.Message,), dict(
+  DESCRIPTOR = _AGENTHEARTBEATREQUEST,
+  __module__ = 'master_pb2'
+  # @@protoc_insertion_point(class_scope:protos.AgentHeartBeatRequest)
+  ))
+_sym_db.RegisterMessage(AgentHeartBeatRequest)
+
+AgentHeartBeatResponse = _reflection.GeneratedProtocolMessageType('AgentHeartBeatResponse', (_message.Message,), dict(
+  DESCRIPTOR = _AGENTHEARTBEATRESPONSE,
+  __module__ = 'master_pb2'
+  # @@protoc_insertion_point(class_scope:protos.AgentHeartBeatResponse)
+  ))
+_sym_db.RegisterMessage(AgentHeartBeatResponse)
+
 
 
 _MASTER = _descriptor.ServiceDescriptor(
@@ -195,8 +280,8 @@ _MASTER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=283,
-  serialized_end=443,
+  serialized_start=388,
+  serialized_end=632,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecutePipeline',
@@ -214,6 +299,15 @@ _MASTER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_REGISTERAGENTREQUEST,
     output_type=_REGISTERAGENTRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='ClientHeartBeat',
+    full_name='protos.Master.ClientHeartBeat',
+    index=2,
+    containing_service=None,
+    input_type=_AGENTHEARTBEATREQUEST,
+    output_type=_AGENTHEARTBEATRESPONSE,
     options=None,
   ),
 ])

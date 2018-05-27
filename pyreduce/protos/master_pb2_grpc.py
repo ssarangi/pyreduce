@@ -24,6 +24,11 @@ class MasterStub(object):
         request_serializer=master__pb2.RegisterAgentRequest.SerializeToString,
         response_deserializer=master__pb2.RegisterAgentResponse.FromString,
         )
+    self.ClientHeartBeat = channel.unary_unary(
+        '/protos.Master/ClientHeartBeat',
+        request_serializer=master__pb2.AgentHeartBeatRequest.SerializeToString,
+        response_deserializer=master__pb2.AgentHeartBeatResponse.FromString,
+        )
 
 
 class MasterServicer(object):
@@ -44,6 +49,13 @@ class MasterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ClientHeartBeat(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_MasterServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -56,6 +68,11 @@ def add_MasterServicer_to_server(servicer, server):
           servicer.RegisterAgent,
           request_deserializer=master__pb2.RegisterAgentRequest.FromString,
           response_serializer=master__pb2.RegisterAgentResponse.SerializeToString,
+      ),
+      'ClientHeartBeat': grpc.unary_unary_rpc_method_handler(
+          servicer.ClientHeartBeat,
+          request_deserializer=master__pb2.AgentHeartBeatRequest.FromString,
+          response_serializer=master__pb2.AgentHeartBeatResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

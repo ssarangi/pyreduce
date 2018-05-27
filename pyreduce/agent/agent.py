@@ -1,6 +1,7 @@
-class Agent:
+class AgentInfo:
     def __init__(self):
-        self.grpc_port = None
+        self.stub = None
+        self.unique_id = None
 
 
-agent = Agent()
+agent_info = AgentInfo()

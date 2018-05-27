@@ -22,7 +22,18 @@ message RegisterAgentResponse {
     string client_id = 1;
 }
 
+message AgentHeartBeatRequest {
+    string unique_id = 1;
+    int32 pid_count = 2;
+    int64 memory = 3;
+}
+
+message AgentHeartBeatResponse {
+
+}
+
 service Master {
     rpc ExecutePipeline(PipelineRequest) returns (PipelineResponse) {}
     rpc RegisterAgent(RegisterAgentRequest) returns (RegisterAgentResponse) {}
+    rpc ClientHeartBeat(AgentHeartBeatRequest) returns (AgentHeartBeatResponse) {}
 }

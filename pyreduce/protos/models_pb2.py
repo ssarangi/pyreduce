@@ -19,78 +19,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='models.proto',
   package='protos',
   syntax='proto3',
-  serialized_pb=_b('\n\x0cmodels.proto\x12\x06protos\"~\n\x0cMasterServer\x12\x30\n\x06\x61gents\x18\x01 \x03(\x0b\x32 .protos.MasterServer.AgentsEntry\x1a<\n\x0b\x41gentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1c\n\x05value\x18\x02 \x01(\x0b\x32\r.protos.Agent:\x02\x38\x01\"\x97\x01\n\x07\x43PUInfo\x12\x0c\n\x04\x61rch\x18\x01 \x01(\t\x12\x0c\n\x04\x62its\x18\x02 \x01(\x05\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\r\n\x05\x63ount\x18\x04 \x01(\x05\x12\x13\n\x0b\x63pu_version\x18\x05 \x01(\t\x12\x16\n\x0e\x65xtended_model\x18\x06 \x01(\x05\x12\x0e\n\x06\x66\x61mily\x18\x07 \x01(\x05\x12\x15\n\rL2_cache_size\x18\x08 \x01(\x05\"L\n\nPythonInfo\x12\x15\n\rmajor_version\x18\x01 \x01(\x05\x12\x15\n\rminor_version\x18\x02 \x01(\x05\x12\x10\n\x08revision\x18\x03 \x01(\x05\"!\n\x0bNetworkInfo\x12\x12\n\nip_address\x18\x01 \x01(\t\"\x96\x01\n\nSystemInfo\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\"\n\tcpu_infos\x18\x02 \x01(\x0b\x32\x0f.protos.CPUInfo\x12\'\n\x0bpython_info\x18\x03 \x01(\x0b\x32\x12.protos.PythonInfo\x12)\n\x0cnetwork_info\x18\x04 \x01(\x0b\x32\x13.protos.NetworkInfo\"C\n\x05\x41gent\x12\x11\n\tunique_id\x18\x01 \x01(\t\x12\'\n\x0bsystem_info\x18\x02 \x01(\x0b\x32\x12.protos.SystemInfob\x06proto3')
+  serialized_pb=_b('\n\x0cmodels.proto\x12\x06protos\"\x7f\n\x07\x43PUInfo\x12\x0c\n\x04\x61rch\x18\x01 \x01(\t\x12\x0c\n\x04\x62its\x18\x02 \x01(\x05\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\r\n\x05\x63ount\x18\x04 \x01(\x05\x12\x13\n\x0b\x63pu_version\x18\x05 \x01(\t\x12\x0e\n\x06\x66\x61mily\x18\x06 \x01(\x05\x12\x15\n\rL2_cache_size\x18\x07 \x01(\x05\"L\n\nPythonInfo\x12\x15\n\rmajor_version\x18\x01 \x01(\x05\x12\x15\n\rminor_version\x18\x02 \x01(\x05\x12\x10\n\x08revision\x18\x03 \x01(\x05\"!\n\x0bNetworkInfo\x12\x12\n\nip_address\x18\x01 \x01(\t\"\x96\x01\n\nSystemInfo\x12\x10\n\x08hostname\x18\x01 \x01(\t\x12\"\n\tcpu_infos\x18\x02 \x01(\x0b\x32\x0f.protos.CPUInfo\x12\'\n\x0bpython_info\x18\x03 \x01(\x0b\x32\x12.protos.PythonInfo\x12)\n\x0cnetwork_info\x18\x04 \x01(\x0b\x32\x13.protos.NetworkInfob\x06proto3')
 )
 
 
-
-
-_MASTERSERVER_AGENTSENTRY = _descriptor.Descriptor(
-  name='AgentsEntry',
-  full_name='protos.MasterServer.AgentsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='protos.MasterServer.AgentsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='protos.MasterServer.AgentsEntry.value', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=_descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001')),
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=90,
-  serialized_end=150,
-)
-
-_MASTERSERVER = _descriptor.Descriptor(
-  name='MasterServer',
-  full_name='protos.MasterServer',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='agents', full_name='protos.MasterServer.agents', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_MASTERSERVER_AGENTSENTRY, ],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=24,
-  serialized_end=150,
-)
 
 
 _CPUINFO = _descriptor.Descriptor(
@@ -136,22 +68,15 @@ _CPUINFO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='extended_model', full_name='protos.CPUInfo.extended_model', index=5,
+      name='family', full_name='protos.CPUInfo.family', index=5,
       number=6, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='family', full_name='protos.CPUInfo.family', index=6,
+      name='L2_cache_size', full_name='protos.CPUInfo.L2_cache_size', index=6,
       number=7, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='L2_cache_size', full_name='protos.CPUInfo.L2_cache_size', index=7,
-      number=8, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -168,8 +93,8 @@ _CPUINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=153,
-  serialized_end=304,
+  serialized_start=24,
+  serialized_end=151,
 )
 
 
@@ -213,8 +138,8 @@ _PYTHONINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=306,
-  serialized_end=382,
+  serialized_start=153,
+  serialized_end=229,
 )
 
 
@@ -244,8 +169,8 @@ _NETWORKINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=384,
-  serialized_end=417,
+  serialized_start=231,
+  serialized_end=264,
 )
 
 
@@ -296,77 +221,18 @@ _SYSTEMINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=420,
-  serialized_end=570,
+  serialized_start=267,
+  serialized_end=417,
 )
 
-
-_AGENT = _descriptor.Descriptor(
-  name='Agent',
-  full_name='protos.Agent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='unique_id', full_name='protos.Agent.unique_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='system_info', full_name='protos.Agent.system_info', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=572,
-  serialized_end=639,
-)
-
-_MASTERSERVER_AGENTSENTRY.fields_by_name['value'].message_type = _AGENT
-_MASTERSERVER_AGENTSENTRY.containing_type = _MASTERSERVER
-_MASTERSERVER.fields_by_name['agents'].message_type = _MASTERSERVER_AGENTSENTRY
 _SYSTEMINFO.fields_by_name['cpu_infos'].message_type = _CPUINFO
 _SYSTEMINFO.fields_by_name['python_info'].message_type = _PYTHONINFO
 _SYSTEMINFO.fields_by_name['network_info'].message_type = _NETWORKINFO
-_AGENT.fields_by_name['system_info'].message_type = _SYSTEMINFO
-DESCRIPTOR.message_types_by_name['MasterServer'] = _MASTERSERVER
 DESCRIPTOR.message_types_by_name['CPUInfo'] = _CPUINFO
 DESCRIPTOR.message_types_by_name['PythonInfo'] = _PYTHONINFO
 DESCRIPTOR.message_types_by_name['NetworkInfo'] = _NETWORKINFO
 DESCRIPTOR.message_types_by_name['SystemInfo'] = _SYSTEMINFO
-DESCRIPTOR.message_types_by_name['Agent'] = _AGENT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-MasterServer = _reflection.GeneratedProtocolMessageType('MasterServer', (_message.Message,), dict(
-
-  AgentsEntry = _reflection.GeneratedProtocolMessageType('AgentsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _MASTERSERVER_AGENTSENTRY,
-    __module__ = 'models_pb2'
-    # @@protoc_insertion_point(class_scope:protos.MasterServer.AgentsEntry)
-    ))
-  ,
-  DESCRIPTOR = _MASTERSERVER,
-  __module__ = 'models_pb2'
-  # @@protoc_insertion_point(class_scope:protos.MasterServer)
-  ))
-_sym_db.RegisterMessage(MasterServer)
-_sym_db.RegisterMessage(MasterServer.AgentsEntry)
 
 CPUInfo = _reflection.GeneratedProtocolMessageType('CPUInfo', (_message.Message,), dict(
   DESCRIPTOR = _CPUINFO,
@@ -396,14 +262,5 @@ SystemInfo = _reflection.GeneratedProtocolMessageType('SystemInfo', (_message.Me
   ))
 _sym_db.RegisterMessage(SystemInfo)
 
-Agent = _reflection.GeneratedProtocolMessageType('Agent', (_message.Message,), dict(
-  DESCRIPTOR = _AGENT,
-  __module__ = 'models_pb2'
-  # @@protoc_insertion_point(class_scope:protos.Agent)
-  ))
-_sym_db.RegisterMessage(Agent)
 
-
-_MASTERSERVER_AGENTSENTRY.has_options = True
-_MASTERSERVER_AGENTSENTRY._options = _descriptor._ParseOptions(descriptor_pb2.MessageOptions(), _b('8\001'))
 # @@protoc_insertion_point(module_scope)

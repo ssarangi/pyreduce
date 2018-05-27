@@ -26,3 +26,8 @@ class MasterServicer(master_pb2_grpc.MasterServicer):
         unique_id = master_server_info.register_agent(request.system_info, pendulum.now())
         register_agent_response = master_pb2.RegisterAgentResponse(client_id=unique_id)
         return register_agent_response
+
+    def ClientHeartBeat(self, request, context):
+        logger.debug('Received heart beat from agent: %s', request.unique_id)
+        heartbeat_response = master_pb2.AgentHeartBeatResponse()
+        return heartbeat_response

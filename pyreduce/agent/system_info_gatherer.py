@@ -12,18 +12,18 @@ def cpu_info_gatherer():
     cpu_info.brand = info['brand']
     cpu_info.count = info['count']
     cpu_info.cpu_version = str(info['cpuinfo_version'])
-    cpu_info.extended_model = info['extended_model']
     cpu_info.family = info['family']
     cpu_info.L2_cache_size = int(info['l2_cache_size'])
     return cpu_info
 
+
 def python_info_gatherer():
-    python_info = PythonInfo()
     python_tuple = platform.python_version_tuple()
-    python_info.major = python_tuple[0]
-    python_info.minor = python_tuple[1]
-    python_info.revision = python_tuple[2]
+    python_info = PythonInfo(major_version=int(python_tuple[0]),
+                             minor_version=int(python_tuple[1]),
+                             revision=int(python_tuple[2]))
     return python_info
+
 
 def system_info_gatherer():
     cpu_infos = cpu_info_gatherer()
