@@ -1,7 +1,7 @@
 import platform
 import cpuinfo
 
-from protos.master_pb2 import CPUInfo, PythonInfo
+from protos.models_pb2 import CPUInfo, PythonInfo
 
 
 def cpu_info_gatherer():

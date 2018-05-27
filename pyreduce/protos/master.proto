@@ -3,6 +3,7 @@ syntax = "proto3";
 package protos;
 
 import "google/protobuf/timestamp.proto";
+import "models.proto";
 
 message PipelineRequest {
     int64 id = 1;
@@ -13,36 +14,8 @@ message PipelineResponse {
 
 }
 
-// CPU Infos
-message CPUInfo {
-    string arch = 1;
-    int32 bits = 2;
-    string brand = 3;
-    int32 count = 4;
-    string cpu_version = 5;
-    int32 extended_model = 6;
-    int32 family = 7;
-    int32 L2_cache_size = 8;
-}
-
-// Python Version
-message PythonInfo {
-    int32 major_version = 1;
-    int32 minor_version = 2;
-    int32 revision = 3;
-}
-
-message NetworkInfo {
-    string ip_address = 1;
-}
-
-message SystemInfo {
-    CPUInfo cpu_infos = 1;
-    PythonInfo python_info = 2;
-}
-
 message RegisterAgentRequest {
-    NetworkInfo network_info = 1;
+    SystemInfo system_info = 1;
 }
 
 message RegisterAgentResponse {

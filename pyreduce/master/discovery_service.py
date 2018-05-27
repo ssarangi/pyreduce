@@ -6,11 +6,13 @@ import json
 import pendulum
 
 from constants import KEYS
-from utils import auth_utils
-from utils import logutils
-from utils import network
+from utils import crypt
+from utils import decrypt
+from utils import prepare_text
+from utils import get_logger
+from utils import get_ip_address
 from config import DiscoveryConfig, GRPCConfig
-logger = logutils.get_logger(__name__)
+logger = get_logger(__name__)
 
 
 class DiscoverServerProtocol(asyncio.Protocol):
@@ -24,7 +26,7 @@ class DiscoverServerProtocol(asyncio.Protocol):
         self.transport = transport
 
     def datagram_received(self, data, addr):
-        message = auth_utils.decrypt(data, self.password)
+        message = decrypt(data, self.password)
         message = json.loads(message)
 
         # Get a correlate query
@@ -35,16 +37,16 @@ class DiscoverServerProtocol(asyncio.Protocol):
             except TypeError:
                 logger.debug('Received invalid timestamp in package from %s:%s', addr)
                 if self.disable_hidden:
-                    self.transport.sendto(auth_utils.crypt('%s#ERROR#%s' %
-                                                           (self.magic, 'Invalid Timestamp'),
-                                                           self.password),
+                    self.transport.sendto(crypt('%s#ERROR#%s' %
+                                                (self.magic, 'Invalid Timestamp'),
+                                                self.password),
                                           addr)
                     return
 
             # Check if packet was generated before 20 seconds
             if (pendulum.now() - message_sent_timestamp).in_seconds() < 20:
                 if self.disable_hidden:
-                    self.transport.sendto(auth_utils.crypt("%s#ERROR#%s" % (
+                    self.transport.sendto(crypt("%s#ERROR#%s" % (
                         self.magic, "Timestamp is too old"), self.password), addr)
                     logger.debug('Received outdated package from %s:%s', addr)
                     return
@@ -52,7 +54,7 @@ class DiscoverServerProtocol(asyncio.Protocol):
             # Timestamp is correct
             logger.debug('Received %r from %s', message, addr)
             self.transport.sendto(
-                auth_utils.crypt("%s#OK#%s" % (self.magic, self.answer), self.password), addr)
+                crypt("%s#OK#%s" % (self.magic, self.answer), self.password), addr)
         else:
             logger.warning('MAGIC incorrect: %s', message)
             if self.disable_hidden:
@@ -67,15 +69,15 @@ def server_discover(loop,
                     port=DiscoveryConfig.PORT,
                     password=DiscoveryConfig.PASSWORD,
                     disable_hidden=False):
-    server_ip = network.get_ip_address()
+    server_ip = get_ip_address()
     logger.info('Starting Discover Server at port %s', port)
 
     if password:
-        password = auth_utils.prepare_text(password)
+        password = prepare_text(password)
 
     config = dict()
     config[KEYS.GRPC_SERVER_PORT] = GRPCConfig.PORT
-    config[KEYS.GRPC_SERVER_IP] = network.get_ip_address()
+    config[KEYS.GRPC_SERVER_IP] = get_ip_address()
     _answer = json.dumps(config)
 
     # Setup Protocol

@@ -4,8 +4,8 @@ import threading
 
 from config import WebAppConfig, GRPCConfig
 from protos import master_pb2_grpc as master_pb2_grpc
-from utils.logutils import get_logger
-from utils.network import get_ip_address
+from utils import get_logger
+from utils import get_ip_address
 
 from .discovery_service import server_discover
 from .rpc_api import MasterServicer, grpc_server
