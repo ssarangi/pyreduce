@@ -25,17 +25,16 @@ def send_heartbeat(agent_info):
         yield from asyncio.sleep(5)
 
 def execute_agent():
-    _, _, grpc_server_ip, grpc_server_port = discover(
-        magic=DiscoveryConfig.MAGIC,
-        port=DiscoveryConfig.PORT,
-        password=DiscoveryConfig.PASSWORD,
-        timeout=5)
+    # _, _, grpc_server_ip, grpc_server_port = discover(
+    #     magic=DiscoveryConfig.MAGIC,
+    #     port=DiscoveryConfig.PORT,
+    #     password=DiscoveryConfig.PASSWORD,
+    #     timeout=5)
 
+    grpc_server_ip = 'localhost'
+    grpc_server_port = '50051'
     cpu_infos, python_info = system_info_gatherer()
-    # logger.info(cpu_infos)
-    # logger.info(python_info)
 
-    # channel = grpc.insecure_channel('localhost:%s' % (grpc_server_port)) # (grpc_server_ip, grpc_server_port))
     grpc_server = '%s:%s' % (grpc_server_ip, grpc_server_port)
     logger.info('Connecting to GRPC server at %s', grpc_server)
     channel = grpc.insecure_channel(grpc_server)

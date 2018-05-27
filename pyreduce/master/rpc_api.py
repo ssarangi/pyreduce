@@ -8,11 +8,12 @@ from utils import get_logger
 from .master_server_info import master_server_info
 
 grpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=100))
-logger = get_logger(__name__)
+
 
 class MasterServicer(master_pb2_grpc.MasterServicer):
     def __init__(self):
         self.master_server_info = MasterServerInfo()
+        self.logger = get_logger(__name__)
 
     def ExecutePipeline(self, request, context):
         return master_pb2.PipelineResponse()
@@ -22,12 +23,12 @@ class MasterServicer(master_pb2_grpc.MasterServicer):
         s = '\nRegistering Agent:\n'
         s += ('Hostname: %s\n' % hostname)
         s += ('IP Address: %s\n' % request.system_info.network_info.ip_address)
-        logger.debug(s)
+        self.logger.info(s)
         unique_id = master_server_info.register_agent(request.system_info, pendulum.now())
         register_agent_response = master_pb2.RegisterAgentResponse(client_id=unique_id)
         return register_agent_response
 
     def ClientHeartBeat(self, request, context):
-        logger.debug('Received heart beat from agent: %s', request.unique_id)
+        self.logger.info('Received heart beat from agent: %s', request.unique_id)
         heartbeat_response = master_pb2.AgentHeartBeatResponse()
         return heartbeat_response
