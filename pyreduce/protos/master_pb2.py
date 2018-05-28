@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='master.proto',
   package='protos',
   syntax='proto3',
-  serialized_pb=_b('\n\x0cmaster.proto\x12\x06protos\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x0cmodels.proto\"P\n\x0fPipelineRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x31\n\rcreation_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x12\n\x10PipelineResponse\"?\n\x14RegisterAgentRequest\x12\'\n\x0bsystem_info\x18\x01 \x01(\x0b\x32\x12.protos.SystemInfo\"*\n\x15RegisterAgentResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\"M\n\x15\x41gentHeartBeatRequest\x12\x11\n\tunique_id\x18\x01 \x01(\t\x12\x11\n\tpid_count\x18\x02 \x01(\x05\x12\x0e\n\x06memory\x18\x03 \x01(\x03\"\x18\n\x16\x41gentHeartBeatResponse2\xf4\x01\n\x06Master\x12\x46\n\x0f\x45xecutePipeline\x12\x17.protos.PipelineRequest\x1a\x18.protos.PipelineResponse\"\x00\x12N\n\rRegisterAgent\x12\x1c.protos.RegisterAgentRequest\x1a\x1d.protos.RegisterAgentResponse\"\x00\x12R\n\x0f\x43lientHeartBeat\x12\x1d.protos.AgentHeartBeatRequest\x1a\x1e.protos.AgentHeartBeatResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0cmaster.proto\x12\x06protos\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x0cmodels.proto\"P\n\x0fPipelineRequest\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x31\n\rcreation_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x12\n\x10PipelineResponse\"?\n\x14RegisterAgentRequest\x12\'\n\x0bsystem_info\x18\x01 \x01(\x0b\x32\x12.protos.SystemInfo\"*\n\x15RegisterAgentResponse\x12\x11\n\tclient_id\x18\x01 \x01(\t\"Z\n\x15\x41gentHeartBeatRequest\x12\x11\n\tunique_id\x18\x01 \x01(\t\x12\x11\n\tpid_count\x18\x02 \x01(\x05\x12\x1b\n\x13percent_memory_used\x18\x03 \x01(\x02\"\x18\n\x16\x41gentHeartBeatResponse2\xf4\x01\n\x06Master\x12\x46\n\x0f\x45xecutePipeline\x12\x17.protos.PipelineRequest\x1a\x18.protos.PipelineResponse\"\x00\x12N\n\rRegisterAgent\x12\x1c.protos.RegisterAgentRequest\x1a\x1d.protos.RegisterAgentResponse\"\x00\x12R\n\x0f\x43lientHeartBeat\x12\x1d.protos.AgentHeartBeatRequest\x1a\x1e.protos.AgentHeartBeatResponse\"\x00\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,models__pb2.DESCRIPTOR,])
 
@@ -174,9 +174,9 @@ _AGENTHEARTBEATREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='memory', full_name='protos.AgentHeartBeatRequest.memory', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      name='percent_memory_used', full_name='protos.AgentHeartBeatRequest.percent_memory_used', index=2,
+      number=3, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
@@ -193,7 +193,7 @@ _AGENTHEARTBEATREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=282,
-  serialized_end=359,
+  serialized_end=372,
 )
 
 
@@ -216,8 +216,8 @@ _AGENTHEARTBEATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=361,
-  serialized_end=385,
+  serialized_start=374,
+  serialized_end=398,
 )
 
 _PIPELINEREQUEST.fields_by_name['creation_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -280,8 +280,8 @@ _MASTER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=388,
-  serialized_end=632,
+  serialized_start=401,
+  serialized_end=645,
   methods=[
   _descriptor.MethodDescriptor(
     name='ExecutePipeline',

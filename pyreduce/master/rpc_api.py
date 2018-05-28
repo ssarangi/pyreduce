@@ -4,7 +4,7 @@ from concurrent import futures
 from protos import master_pb2_grpc as master_pb2_grpc
 from protos import master_pb2
 from .master_server_info import MasterServerInfo
-from utils import get_logger
+from utils import get_logger, generate_multi_line_string
 from .master_server_info import master_server_info
 
 grpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=100))
@@ -29,6 +29,10 @@ class MasterServicer(master_pb2_grpc.MasterServicer):
         return register_agent_response
 
     def ClientHeartBeat(self, request, context):
-        self.logger.info('Received heart beat from agent: %s', request.unique_id)
+        s = generate_multi_line_string(
+            'Received heart beat from agent: %s' % request.unique_id,
+            'PID count: %s' % request.pid_count,
+            'Memory Used: {:.2f}%'.format(request.percent_memory_used))
+        self.logger.info(s)
         heartbeat_response = master_pb2.AgentHeartBeatResponse()
         return heartbeat_response

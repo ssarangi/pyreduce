@@ -1,5 +1,6 @@
-import platform
 import cpuinfo
+import platform
+import psutil
 
 from protos.models_pb2 import CPUInfo, PythonInfo
 
@@ -24,6 +25,12 @@ def python_info_gatherer():
                              revision=int(python_tuple[2]))
     return python_info
 
+def process_info_gatherer():
+    return len(psutil.pids())
+
+def memory_info_gatherer():
+    percent_memory_used = psutil.virtual_memory().percent
+    return percent_memory_used
 
 def system_info_gatherer():
     cpu_infos = cpu_info_gatherer()

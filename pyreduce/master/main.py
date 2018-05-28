@@ -37,8 +37,8 @@ def run_web_app():
     webapp.run(debug=True, host='0.0.0.0', port=WebAppConfig.WEB_APP_PORT)
 
 def execute_master():
-    # run_discovery_service()
+    run_discovery_service()
     run_grpc_service(only_server=True)
-    # run_web_app()
+    run_web_app()
 
 

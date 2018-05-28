@@ -25,7 +25,7 @@ message RegisterAgentResponse {
 message AgentHeartBeatRequest {
     string unique_id = 1;
     int32 pid_count = 2;
-    int64 memory = 3;
+    float percent_memory_used = 3;
 }
 
 message AgentHeartBeatResponse {
