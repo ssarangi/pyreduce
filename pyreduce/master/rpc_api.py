@@ -20,9 +20,9 @@ class MasterServicer(master_pb2_grpc.MasterServicer):
 
     def RegisterAgent(self, request, context):
         hostname = request.system_info.hostname
-        s = '\nRegistering Agent:\n'
-        s += ('Hostname: %s\n' % hostname)
-        s += ('IP Address: %s\n' % request.system_info.network_info.ip_address)
+        s = generate_multi_line_string(
+            'Registering Agent: %s' % hostname,
+            'IP Address: %s' % request.system_info.network_info.ip_address)
         self.logger.info(s)
         unique_id = master_server_info.register_agent(request.system_info, pendulum.now())
         register_agent_response = master_pb2.RegisterAgentResponse(client_id=unique_id)
